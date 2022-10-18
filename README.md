@@ -28,11 +28,20 @@ JPinyin支持常见多音字的识别，其中包括词组、成语、地名等�
 
 ``` xml
     <dependency>
-        <groupId>io.github.ranlee1</groupId>
-        <artifactId>jpinyin</artifactId>
+        <groupId>io.github.cqwsbsy</groupId>
+	    <artifactId>jpinyin</artifactId>
         <version>1.0.1</version>
     </dependency>
 ```
+
+## Config
+    默认不需要配置，若需要拓展自己的字典则需要在spring配置文件中指定拓展字典文件的位置
+    例如：
+```yaml
+    jpingying:
+      ext-file-path: drug_mutil_pinyin.dic
+```
+    表示在springboot项目中的resource目录下添加了自定义字典文件drug_mutil_pinyin.dic
 ## Usage
 
 ``` java
@@ -42,4 +51,10 @@ JPinyin支持常见多音字的识别，其中包括词组、成语、地名等�
     PinyinHelper.convertToPinyinString(str, ",", PinyinFormat.WITHOUT_TONE); // ni,hao,shi,jie
     PinyinHelper.getShortPinyin(str); // nhsj
     PinyinHelper.addPinyinDict("user.dict");  // 添加用户自定义字典
+```
+    或者使用提供的pinyinUtil
+```java
+    @Autowired
+    private PinyinUtil pinyinUtil;
+    pinyinUtil.getFullPinyin("党参");//dangsen
 ```
