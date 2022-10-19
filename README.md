@@ -54,6 +54,7 @@ JPinyin支持常见多音字的识别，其中包括词组、成语、地名等�
 ```
     或者使用提供的pinyinUtil
 ```java
+    import io.github.jpinyin.PinyinUtil;
     @Autowired
     private PinyinUtil pinyinUtil;
     pinyinUtil.getFullPinyin("党参");//dangsen
